@@ -10,29 +10,164 @@
     <script type="text/javascript" src="js/lib/knockout-2.1.0.js"></script>
     <script type="text/javascript" src="js/lib/knockout.mapping.js"></script>
 
+    <!-- FOUNDATION -->
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+
    
     <script type="text/javascript" src="js/mvvm.js"></script>
 
   
     
-	<title>Cosa</title>
+  <title>Farmacia</title>
 
 </head>
 
 <body>
+  <div class="grid flex">
+    <h1 style="text-align:center;">Receta Farmaceútica</h1>
 
-    <div data-bind="visible: pagina()== 'menu'">
+      <!-- <ul class="folders" data-bind="foreach: folders" >
+      <li><a data-bind="attr:{ 'href': '#' }, click: $root.goToFolder"><span data-bind="text: $data"></span></a></li>
+      </ul> --> 
+  
+     <!-- Menu con botones -->
+<!--     <ul class="menu">
+      <button data-bind="click: home">Home</button>
+      <button data-bind="click: formu">Nuevo Cliente</button>
+      <button data-bind="click: logIn">Log In</button>
+    </ul> -->
+   <!--  <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li><a data-bind="attr:{ 'href': '#' }, click: $root.home">Home</a></li>
+        <li><a data-bind="attr:{ 'href': '#' }, click: $root.formu">Formulario</a></li>
+        <li><a data-bind="attr:{ 'href': '#' }, click: $root.logIn">Log In</a></li>
+      </ul>
+    </nav> -->
+
+    <nav class="top-bar docs-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a data-bind="attr:{ 'href': '#' }, click: $root.home">Receta Farmacéutica</a></h1> 
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+        <li class="divider"></li>
+      </ul>
+      <section class="top-bar-section"> 
+          <!-- Left Nav Section --> 
+        <ul class="left">
+          <li class="divider"></li>
+          <li><a data-bind="attr:{ 'href': '#' }, click: $root.formu">Nuevo Cliente</a></li> 
+          <li class="divider"></li>
+        </ul> 
+         <!-- Right Nav Section --> 
+        <ul class="right">
+          <li class="divider"></li>
+          <li class="has-form" data-bind="ifnot: valid"><a data-bind="attr:{ 'href': '#' }, click: $root.logIn " >Log In</a></li>
+          <li class="has-form" data-bind="if: valid"><a data-bind="attr:{ 'href': '#' }, click: $root.logIn">Log Out</a></li>  
+        </ul>
+      </section>
+    </nav>
+
+      <!-- HOME -->
+    <div data-bind="visible: pagina()== 'home'">
       <p>Esto es el menu</p>
       <button data-bind="click: formu">Ir al formulario</button>
     </div>
 
 
+      <!-- NUEVO CLIENTE -->
     <div data-bind="visible: pagina()=='formulario' ">
-      <p>Esto es el form</p>
+      <form>
+        <label>Introduzca a continuación el TSI del cliente: 
+          <input data-bind="value: tsi" size="13"/>
+          <p align:"center">
+          <button style="text-align:center" data-bind="click: listaCliente">Aceptar</button>
+        </p>
+        </label>
     </div>
 
-</body>
 
+    <!-- RECETAS CLIENTE  (poner delante del login, si no, no funciona)-->
+    <div data-bind="visible: pagina()=='listaCliente'">
+      <p>Holi cliente con TSI: <strong data-bind="text: tsi"></strong></p>
+      <button data-bind="click: resumen">Ir al resumen</button>
+    </div>
+
+      <!-- RESUMEN -->
+    <div class="large-9 columns">
+      <div data-bind="visible: pagina()=='resumen'">
+        <h3 style="text-align:center;">Resumen Medicamento</h3>
+        <label>TSI Cliente: 
+          <strong data-bind="text:tsi"></strong>
+        </label>
+        <label> Le ha atendido: <strong>Nombre farmacéutico</strong>
+        </label>
+        <label>Farmacia: <strong>Identificador farmacia</strong></label>
+        <label> Medicamento: <strong>Nombre del medicamento</strong>
+        </label>
+        <label>Fecha: <strong id="today"></strong>
+        </label> <p><p>
+        <label>Forma de pago:</label>
+          <select> 
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+          </select>
+        
+        <label>Importe:</label> 
+          <div class="small-5 columns">
+            <div class="small-9 columns">
+              <input type="text" size="5"/>
+            </div>
+            <div class="small-3 columns">
+              <span class="postfix">€</span>
+            </div>
+          </div>
+        <p>holi</p>
+
+        <div>
+        <label>Forma de administración
+          <textarea placeholder="Introduzca cualquier comentario adicional"></textarea>
+        </label>
+        </div>
+        <label>Comentarios
+          <textarea placeholder="Introduzca cualquier comentario adicional"></textarea>
+        </label>
+
+        <button>Confirmar</button>
+      </div>
+    </div>
+  
+
+
+
+
+
+     <!-- LOG IN -->
+    <div data-bind="visible: pagina()=='login'" class="row">
+      <p>Login</p>
+      <form name="myform">
+        <div class="large-10 large-push-2 columns">
+          <fieldset>
+            <legend>Log In</legend>
+            <div class="row">
+              <div class="large-10 large-push-2 columns">
+                <label>Username</label>
+                  <input id="username" type="username" required>
+                <label for="password">Password <small>required</small>
+                      <input id="password" type="password" required></input>
+                </label>
+              </div>
+            </div>
+            <div style="text-align:right">
+              <button data-bind="click: validate">Submit</button>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+  </div>
+</body>
 </html>
 
 
