@@ -10,6 +10,8 @@
     <script type="text/javascript" src="js/lib/knockout-2.1.0.js"></script>
     <script type="text/javascript" src="js/lib/knockout.mapping.js"></script>
 
+    <link rel="shortcut icon" href="img/favicon.ico" >
+
     <!-- FOUNDATION -->
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
@@ -59,18 +61,20 @@
           <li class="divider"></li>
           <li><a data-bind="attr:{ 'href': '#' }, click: $root.formu">Nuevo Cliente</a></li> 
           <li class="divider"></li>
+          <li><a data-bind="attr:{ 'href': '#' }, click: $root.trampa">Login automatico (eliminar)</a></li> 
+          <li class="divider"></li>
         </ul> 
          <!-- Right Nav Section --> 
         <ul class="right">
           <li class="divider"></li>
           <li class="has-form" data-bind="ifnot: valid"><a data-bind="attr:{ 'href': '#' }, click: $root.logIn " >Log In</a></li>
-          <li class="has-form" data-bind="if: valid"><a data-bind="attr:{ 'href': '#' }, click: $root.logIn">Log Out</a></li>  
+          <li class="has-form" data-bind="if: valid"><a data-bind="attr:{ 'href': '#' }, click: $root.logOut">Log Out</a></li>  
         </ul>
       </section>
     </nav>
 
       <!-- HOME -->
-    <div data-bind="visible: pagina()== 'home'">
+    <div data-bind="visible: pagina()== 'home'" style="margin:40px 50px 15px;">
       <p>Esto es el menu</p>
       <button data-bind="click: formu">Ir al formulario</button>
     </div>
@@ -78,11 +82,11 @@
 
       <!-- NUEVO CLIENTE -->
     <div data-bind="visible: pagina()=='formulario' ">
-      <form>
+      <form style="margin:40px 50px 15px;">
         <label>Introduzca a continuación el TSI del cliente: 
           <input data-bind="value: tsi" size="13"/>
           <p align:"center">
-          <button style="text-align:center" data-bind="click: listaCliente">Aceptar</button>
+          <button style="text-align:center; margin: 40px" data-bind="click: listaCliente">Aceptar</button>
         </p>
         </label>
     </div>
@@ -98,42 +102,49 @@
     <div class="large-9 columns">
       <div data-bind="visible: pagina()=='resumen'">
         <h3 style="text-align:center;">Resumen Medicamento</h3>
-        <label>TSI Cliente: 
-          <strong data-bind="text:tsi"></strong>
-        </label>
-        <label> Le ha atendido: <strong>Nombre farmacéutico</strong>
-        </label>
-        <label>Farmacia: <strong>Identificador farmacia</strong></label>
-        <label> Medicamento: <strong>Nombre del medicamento</strong>
-        </label>
-        <label>Fecha: <strong id="today"></strong>
-        </label> <p><p>
-        <label>Forma de pago:</label>
-          <select> 
-            <option value="efectivo">Efectivo</option>
-            <option value="tarjeta">Tarjeta</option>
-          </select>
-        
-        <label>Importe:</label> 
-          <div class="small-5 columns">
-            <div class="small-9 columns">
-              <input type="text" size="5"/>
-            </div>
-            <div class="small-3 columns">
-              <span class="postfix">€</span>
-            </div>
-          </div>
-        <p>holi</p>
-
-        <div>
-        <label>Forma de administración
-          <textarea placeholder="Introduzca cualquier comentario adicional"></textarea>
-        </label>
-        </div>
-        <label>Comentarios
-          <textarea placeholder="Introduzca cualquier comentario adicional"></textarea>
-        </label>
-
+        <table>
+          <tbody>
+            <tr>
+              <td>TSI Cliente: </td>
+              <td><strong data-bind="text:tsi"></strong></td>
+            </tr>
+            <tr>
+              <td>Le ha atendido: </td>
+              <td><strong data-bind="text:farmaceutico"></strong></td>
+            </tr>
+            <tr>
+              <td>Farmacia: </td>
+              <td><strong data-bind="text:farmacia"></strong></td>
+            </tr>
+            <tr>
+              <td>Medicamento: </td>
+              <td><strong data-bind="text:medicamento"></strong></td>
+            </tr>
+            <tr>
+              <td>Fecha:</td>
+              <td><strong id="today"></strong></td>
+            </tr>
+            <tr>
+              <td>Forma de pago</td>
+              <td><select data-bind="options:formasPago, value: pago">
+              </select></td>
+            </tr>
+            <tr>
+              <td>Importe:</td>
+              <td>
+                <input type="text"  data-bind="value:importe" style="margin-right: 35px "/>
+              </td>
+            </tr>
+            <tr>
+              <td>Forma de administración: </td>
+              <td><textarea placeholder="Introduzca dosis"></textarea></td>
+            </tr>
+            <tr>
+              <td>Comentarios adicionales:</td>
+              <td><textarea placeholder="Introduzca cualquier comentario adicional"></textarea></td>
+            </tr>
+          </tbody>
+        </table>
         <button>Confirmar</button>
       </div>
     </div>

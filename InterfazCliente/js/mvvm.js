@@ -5,18 +5,27 @@ function AppViewModel() {
     self.pagina = ko.observable('home');
     self.tsi = ko.observable(' ');
     self.valid = ko.observable(false);
+    self.farmaceutico = ko.observable('Óscar Scrum Master');
+    self.farmacia = ko.observable('Farmacia X');
+    self.medicamento = ko.observable('Parecetamol');
+    self.importe = ko.observable("€");
+    self.formasPago = ko.observableArray(['Efectivo','Tarjeta']);
+    self.pago = ko.observable();
+
+
 
     //Variables globales
     var date = new Date();
     $('#today').html(date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
-    var count = 2; 
-    //var valid = false;
-
-   
+       
     //Redirección
+    self.trampa=function(){
+      self.valid(true);
+    }
     self.formu = function(){
       if(self.valid()==true){
         self.pagina('formulario');
+        self.tsi("");
         return;
       }
       else{
@@ -31,8 +40,10 @@ function AppViewModel() {
         $("#username").val("");
         $("#password").val("");
       }
-      else{
-        self.valid() = false;
+    }
+    self.logOut = function(){
+      if(self.valid()==true){
+        self.valid(false);
         self.pagina('home');
       }
     }
@@ -40,11 +51,13 @@ function AppViewModel() {
     	self.pagina('home');
     }
    self.listaCliente = function(){
+      //Añadir condiciones tsi =13
       self.pagina('listaCliente');
+      self.importe("€");
     }
     self.resumen = function(){
-      //añadir condiciones tsi
       self.pagina('resumen');
+      self.importe("€")
     };
     self.loginAccept = function(){
       console.log("Aceptado");
@@ -62,13 +75,12 @@ function AppViewModel() {
       for(var i=0; i<userArray.length; i++){
         if((user== userArray[i]) && (pw == pwArray[i])){
           self.valid(true);
-          alert("Login successful!");
           self.pagina('home');
           console.log(valid);
           return;
         }
       }
-      alert("Wrong username and/or password. Please try again");
+      alert("Usuario y/o contraseña erroneas. Por favor, vuelva a intentarlo.");
       $("#username").val("");
       $("#password").val("");
       console.log(valid);
