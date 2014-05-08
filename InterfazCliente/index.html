@@ -61,8 +61,8 @@
           <li class="divider"></li>
           <li><a data-bind="attr:{ 'href': '#' }, click: $root.formu">Nuevo Cliente</a></li> 
           <li class="divider"></li>
-          <li><a data-bind="attr:{ 'href': '#' }, click: $root.trampa">Login automatico (eliminar)</a></li> 
-          <li class="divider"></li>
+         <!--  <li><a data-bind="attr:{ 'href': '#' }, click: $root.trampa">Login automatico (eliminar)</a></li> 
+          <li class="divider"></li> -->
         </ul> 
          <!-- Right Nav Section --> 
         <ul class="right">
@@ -94,7 +94,8 @@
 
     <!-- RECETAS CLIENTE  (poner delante del login, si no, no funciona)-->
     <div data-bind="visible: pagina()=='listaCliente'">
-      <p>Holi cliente con TSI: <strong data-bind="text: tsi"></strong></p>
+      <p>Hola cliente con TSI: <strong data-bind="text: tsi"></strong></p>
+      <p>Lista de recetas del cliente</p>
       <button data-bind="click: resumen">Ir al resumen</button>
     </div>
 
