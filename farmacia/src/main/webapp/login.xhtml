@@ -32,16 +32,14 @@
 				<!-- Farmaceutico farmaId -->
 				<h:outputLabel for="farmaId" value="Identificación" />
 				<h:inputText id="farmaId" size="30" value="#{farmaceutico.farmaId}"
-					required="true" requiredMessage="En blanco" validatorMessage="8 caracteres mínimo">
-						<f:validateLength minimum="8"/>
+					required="true" requiredMessage="En blanco">
 				</h:inputText>
 				<h:message styleClass="error-message" for="farmaId" />			
 
 				<!-- Farmaceutico password -->
 				<h:outputLabel for="password" value="Contraseña" />
 				<h:inputSecret id="password" size="30" value="#{farmaceutico.password}"
-					required="true" requiredMessage="En blanco" validatorMessage="8 caracteres mínimo">
-							<f:validateLength minimum="8"/>
+					required="true" requiredMessage="En blanco" >		
 				</h:inputSecret>
 				<h:message styleClass="error-message" for="password" />			
 					

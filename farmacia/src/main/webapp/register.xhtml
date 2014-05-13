@@ -62,7 +62,7 @@
 				<h:inputText id="dni" size="30" value="#{farmaceutico.dni}"
 					required="true" requiredMessage="En blanco">
 						<f:validateRegex
-						pattern="!((^[XYZ]\d{7,8}|^\d{8})[A-HJ-NP-TV-Z]$)"/>					
+						pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))"/>					
 				</h:inputText>
 				<h:message styleClass="error-message" for="dni" />								
 
