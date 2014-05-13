@@ -12,10 +12,49 @@
    <ui:define name="top"></ui:define> 
    <ui:define name="content">
         <h:form>
-            <p>
-              HOLA CARACOLA
+        	
+           <p id="registerCommand" style="float:right;text-align:right;width:25%;">   
+           		<h:outputText value="Bienvenido, " rendered="#{farmaceutico.farmaId != null}"/>
+                &nbsp;
+                <h:outputText value="#{farmaceutico.name}" rendered="#{farmaceutico.farmaId != null}"/>
+                <h:commandLink id="login"
+                               action="login"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId == null}">
+                    <h:outputText value="Identificarse"/>
+                </h:commandLink> 
+                &nbsp;&nbsp;       
+                <h:commandLink id="registerMed"
+                               action="registerMed"
+                               immediate="true" 
+                               rendered="#{farmaceutico.farmaId != null}">
+                    <h:outputText value="Registrar medicamento"/>
+                </h:commandLink>
+                &nbsp;&nbsp;
+                <h:commandLink id="register"
+                               action="register"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId == null}">
+                    <h:outputText value="Registrar farmaceutico"/>
+                </h:commandLink> 
+                 &nbsp;&nbsp;
+                <h:commandLink id="logOut"
+                               action="#{logMe.logOut}"
+                           	   immediate="true"
+                               rendered="#{farmaceutico.farmaId != null}">
+                    <h:outputText value="Cerrar Sesión"/>
+                 </h:commandLink>  
             </p>
+            <p>
+        	HOLA CARACOLA
+        	</p>
         </h:form>
+        <div class="messagecolor">
+            <h:messages showSummary="true" 
+                        showDetail="false"
+                        errorStyle="color: #d20005" 
+                        infoStyle="color: blue"/>
+        </div>
     </ui:define>
  
 </ui:composition>
