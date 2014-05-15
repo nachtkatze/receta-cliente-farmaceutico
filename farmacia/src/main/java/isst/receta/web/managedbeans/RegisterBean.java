@@ -55,6 +55,15 @@ public class RegisterBean extends AbstractBean {
 			message(null,"Las contraseñas no coinciden");
 			return("register");
 		}
+		if(farmaceuticoRequestBean.checkId(farmaceutico.getFarmaId())==null){
+			message(null,"Ese identificador ya se encuentra en uso");
+			return("register");
+		}
+		if(farmaceuticoRequestBean.checkDNI(farmaceutico.getDni())==null){
+			message(null,"Ese DNI ya se encuentra registrado");
+			return("register");
+		}
+		
 		String passwordCifrada=Password.cifrar(farmaceutico.getPassword());
 		farmaceuticoRequestBean.createFarmaceutico(farmaceutico.getFarmaId(), 
 				farmaceutico.getName(), farmaceutico.getSurname(), farmaceutico.getDni(),

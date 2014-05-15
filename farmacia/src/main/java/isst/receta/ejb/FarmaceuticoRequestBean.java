@@ -29,6 +29,22 @@ public class FarmaceuticoRequestBean {
 			throw new EJBException(ex.getMessage());
 		}
 	}
+	public Farmaceutico checkId(String farmaId){
+		Farmaceutico buscado = em.find(Farmaceutico.class, farmaId);
+
+        if (buscado == null) {
+          return null;
+        }
+        return buscado;
+    }
+	public Farmaceutico checkDNI(String DNI){
+		Farmaceutico buscado = em.find(Farmaceutico.class, DNI);
+
+        if (buscado == null) {
+          return null;
+        }
+        return buscado;
+	}
 	
 	
 
