@@ -1,6 +1,6 @@
 package isst.receta.web.managedbeans;
 
-import isst.receta.ejb.FarmaceuticoRequestBean;
+import isst.receta.converters.Password;
 import isst.receta.ejb.Logging;
 import isst.receta.entity.Farmaceutico;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.Dependent;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -24,24 +24,25 @@ public class LoggerBean extends AbstractBean implements Serializable {
 	
 	
 	@Inject
-	private Farmaceutico Farmaceutico;
+	private Farmaceutico farmaceutico;
 	
-	public String enter() {
-		Farmaceutico buscado=logging.checkPassword(Farmaceutico.getFarmaId(), Farmaceutico.getPassword());
+	public String enter() throws Exception{
+		String passwordCifrada=Password.cifrar(farmaceutico.getPassword());
+		Farmaceutico buscado=logging.checkPassword(farmaceutico.getFarmaId(), passwordCifrada);
 		if(buscado!=null){
-			Farmaceutico=buscado;
+			farmaceutico=buscado;
 			return ("index");
 		}
 		
 		message(null, "Match");
-		Farmaceutico.setFarmaId(null);
+		farmaceutico.setFarmaId(null);
 		return ("login");
 	}
 	
 	public String logOut(){
-		System.out.println(Farmaceutico.getFarmaId());
-		Farmaceutico.setFarmaId(null);
-		System.out.println("AHora es" + Farmaceutico.getFarmaId());
+		System.out.println(farmaceutico.getFarmaId());
+		farmaceutico.setFarmaId(null);
+		System.out.println("AHora es" + farmaceutico.getFarmaId());
 		
 		return ("index");
 	}

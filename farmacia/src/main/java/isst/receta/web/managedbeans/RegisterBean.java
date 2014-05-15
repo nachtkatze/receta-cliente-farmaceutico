@@ -1,12 +1,18 @@
 package isst.receta.web.managedbeans;
 
+
 import isst.receta.ejb.FarmaceuticoRequestBean;
 import isst.receta.entity.Farmaceutico;
+import isst.receta.converters.Password;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+
+
+
 
 @Named
 @RequestScoped
@@ -22,10 +28,37 @@ public class RegisterBean extends AbstractBean {
 	@Inject
 	private Farmaceutico farmaceutico;
 	
-	public String submit(){
+	private String admin="Admin";
+	
+	private String passRepeat;
+	
+	
+	public String getPassRepeat() {
+		return passRepeat;
+	}
+
+	public void setPassRepeat(String passRepeat) {
+		this.passRepeat = passRepeat;
+	}
+
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	public String submit() throws Exception{
+		
+		if(farmaceutico.getPassword().equalsIgnoreCase(passRepeat)==false){
+			message(null,"Las contraseñas no coinciden");
+			return("register");
+		}
+		String passwordCifrada=Password.cifrar(farmaceutico.getPassword());
 		farmaceuticoRequestBean.createFarmaceutico(farmaceutico.getFarmaId(), 
 				farmaceutico.getName(), farmaceutico.getSurname(), farmaceutico.getDni(),
-				farmaceutico.getPassword());
+				passwordCifrada);
 		return("index");
 		
 	}
@@ -46,5 +79,7 @@ public class RegisterBean extends AbstractBean {
 	public void setFarmaceutico(Farmaceutico farmaceutico) {
 		this.farmaceutico = farmaceutico;
 	}
+	
+	
 	
 }

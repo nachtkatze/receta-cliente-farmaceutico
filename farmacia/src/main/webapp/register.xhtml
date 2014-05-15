@@ -32,16 +32,26 @@
 				<!-- Farmaceutico farmaId -->
 				<h:outputLabel for="farmaId" value="Identificación" />
 				<h:inputText id="farmaId" size="30" value="#{farmaceutico.farmaId}"
-					required="true" requiredMessage="En blanco">
+					required="true" requiredMessage="En blanco" validatorMessage="ID debe tener 5 caracteres al menos">
+					<f:validateLength minimum="5"/>
 				</h:inputText>
 				<h:message styleClass="error-message" for="farmaId" />
 				
 				<!-- Farmaceutico password -->
 				<h:outputLabel for="password" value="Contraseña" />
 				<h:inputSecret id="password" size="30" value="#{farmaceutico.password}"
-					required="true" requiredMessage="En blanco">
+					required="true" requiredMessage="En blanco" validatorMessage="La contraseña debe tener 8 caracteres al menos">
+					<f:validateLength minimum="8"/>
 				</h:inputSecret>
 				<h:message styleClass="error-message" for="password" />
+				
+				<!-- Farmaceutico repetir password -->
+				<h:outputLabel for="passRepeat" value="Repetir Contraseña" />
+				<h:inputSecret id="passRepeat" size="30" value="#{registerBean.passRepeat}"
+					required="true" requiredMessage="En blanco" validatorMessage="La contraseña debe tener 8 caracteres al menos">
+					<f:validateLength minimum="8"/>
+				</h:inputSecret>
+				<h:message styleClass="error-message" for="passRepeat" />
 
 				<!-- Farmaceutico name -->
 				<h:outputLabel for="name" value="Nombre" />

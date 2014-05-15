@@ -1,7 +1,9 @@
-isst/receta/ejb/FarmaceuticoRequestBean.class
-isst/receta/entity/Med.class
+isst/receta/ejb/Logging.class
 isst/receta/web/managedbeans/AbstractBean.class
 isst/receta/web/managedbeans/RegisterMedBean.class
 isst/receta/ejb/MedRequestBean.class
-isst/receta/entity/Farmaceutico.class
 isst/receta/web/managedbeans/RegisterBean.class
+isst/receta/ejb/FarmaceuticoRequestBean.class
+isst/receta/web/managedbeans/LoggerBean.class
+isst/receta/entity/Med.class
+isst/receta/entity/Farmaceutico.class

@@ -10,6 +10,7 @@
                 template="/template.xhtml">
    
    <ui:define name="top"></ui:define>
+   <ui:define name="menu"></ui:define>
    <ui:define name="content">
         <h:form>
         
@@ -34,7 +35,7 @@
                 <h:commandLink id="register"
                                action="register"
                                immediate="true"
-                               rendered="#{farmaceutico.farmaId == null}">
+                               rendered="#{farmaceutico.farmaId != registerBean.admin}">
                     <h:outputText value="Registrar farmaceutico"/>
                 </h:commandLink>
                  &nbsp;&nbsp;

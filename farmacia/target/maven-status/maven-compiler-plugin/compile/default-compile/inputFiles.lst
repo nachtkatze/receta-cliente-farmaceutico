@@ -1,7 +1,9 @@
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/web/managedbeans/RegisterBean.java
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/ejb/FarmaceuticoRequestBean.java
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/web/managedbeans/RegisterMedBean.java
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/entity/Farmaceutico.java
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/web/managedbeans/AbstractBean.java
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/ejb/MedRequestBean.java
-/home/js.aguera/git/receta-cliente-farmaceutico/farmacia/src/main/java/isst/receta/entity/Med.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/ejb/MedRequestBean.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/web/managedbeans/AbstractBean.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/web/managedbeans/RegisterMedBean.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/ejb/FarmaceuticoRequestBean.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/web/managedbeans/RegisterBean.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/entity/Farmaceutico.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/ejb/Logging.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/web/managedbeans/LoggerBean.java
+/home/nacho/workspace/farmacia/src/main/java/isst/receta/entity/Med.java

@@ -29,6 +29,8 @@ public class FarmaceuticoRequestBean {
 			throw new EJBException(ex.getMessage());
 		}
 	}
+	
+	
 
 }
  

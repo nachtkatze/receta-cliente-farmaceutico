@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: js.aguera
-Build-Jdk: 1.6.0_30
+Built-By: nacho
+Build-Jdk: 1.7.0_55
 Created-By: Maven Integration for Eclipse
 
