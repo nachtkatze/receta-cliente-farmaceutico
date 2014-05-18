@@ -23,9 +23,10 @@ public class RegisterMedBean extends AbstractBean {
 	private double price;
 	private int units;
 	
-	public String submit() throws Exception{
-		Med buscado=medRequestBean.getMed(medId);
-		if(buscado!=null){
+	public String submit(){
+
+		if(medRequestBean.getMed(medId)!=null){
+			Med buscado=medRequestBean.getMed(medId);
 			//Si ya se encuentra registrado,simplemente añadimos más unidades
 			buscado.setUnits(buscado.getUnits()+units);
 			System.out.println("Las unidades son"+ buscado.getUnits());
@@ -36,6 +37,7 @@ public class RegisterMedBean extends AbstractBean {
 		medRequestBean.createMed(medId, name,brand,price,units);
 		message(null,"Introducido con exito");
 		return ("index");
+		
 	}
 
 	public MedRequestBean getMedRequestBean() {

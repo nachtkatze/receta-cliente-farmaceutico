@@ -41,12 +41,8 @@ public class MedRequestBean {
         }
     }
 
-    public Med getMed(String medId) throws Exception {
+    public Med getMed(String medId){
         Med requestedMed = em.find(Med.class, medId);
-
-        if (requestedMed == null) {
-            throw new Exception("Couldn't find med: " + medId);
-        }
 
         return requestedMed;
     }

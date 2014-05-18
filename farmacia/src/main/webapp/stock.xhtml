@@ -40,16 +40,21 @@
                          </h:column>
                          <h:column>
                          	<f:facet name="header">Precio</f:facet>
-                         	<h:outputText value="#{med.price}"/>
+                         	<h:outputText value="#{med.price}">
+                         		<f:convertNumber currencySymbol="€" type="currency"/>
+                         	</h:outputText>
                          </h:column>
+                         
                          <h:column>
                          	<f:facet name="header">Unidades</f:facet>
                          	<h:outputText value="#{med.units}"/>
-                         </h:column>
-                      
+                         </h:column> 
+                                                                             	
+                    	  
 		
 		
 		</h:dataTable>
+		
 		
 		<div class="messagecolor">
             <h:messages showSummary="true" 
