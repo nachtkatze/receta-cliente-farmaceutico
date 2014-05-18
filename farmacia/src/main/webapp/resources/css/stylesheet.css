@@ -101,11 +101,13 @@ a:link:hover, a:visited:hover  {
   text-align: center;
 }
 
-.list-row-even { 
+.list-row-even {
+	text-align:center
 }
 
 .list-row-odd { 
   background-color: #eaf1f8;
+  text-align:center
 }
 
 .special-offer { 

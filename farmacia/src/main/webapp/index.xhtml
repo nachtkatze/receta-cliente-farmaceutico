@@ -32,6 +32,13 @@
                     <h:outputText value="Registrar medicamento"/>
                 </h:commandLink>
                 &nbsp;&nbsp;
+                <h:commandLink id="stock"
+                               action="stock"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId == registerBean.admin}">
+                    <h:outputText value="Ver almacen"/>
+                </h:commandLink>
+                 &nbsp;&nbsp;
                 <h:commandLink id="register"
                                action="register"
                                immediate="true"

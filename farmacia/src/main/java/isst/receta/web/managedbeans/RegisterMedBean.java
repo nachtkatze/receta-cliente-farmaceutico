@@ -8,7 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named
+@Named("regMed")
 @RequestScoped
 public class RegisterMedBean extends AbstractBean {
 
@@ -16,13 +16,24 @@ public class RegisterMedBean extends AbstractBean {
 
 	@EJB
 	private MedRequestBean medRequestBean;
-
 	
-	@Inject
-	private Med med;
+	private String medId;
+	private String name;
+	private String brand;
+	private double price;
+	private int units;
 	
-	public String submit() {
-		medRequestBean.createMed(med.getMedId(), med.getName(),med.getBrand(),med.getPrice());
+	public String submit() throws Exception{
+		Med buscado=medRequestBean.getMed(medId);
+		if(buscado!=null){
+			//Si ya se encuentra registrado,simplemente añadimos más unidades
+			buscado.setUnits(buscado.getUnits()+units);
+			System.out.println("Las unidades son"+ buscado.getUnits());
+			medRequestBean.update(buscado);
+			message(null,"Stock actualizado");
+			return("index");
+		}
+		medRequestBean.createMed(medId, name,brand,price,units);
 		message(null,"Introducido con exito");
 		return ("index");
 	}
@@ -35,13 +46,47 @@ public class RegisterMedBean extends AbstractBean {
 		this.medRequestBean = medRequestBean;
 	}
 
-	public Med getMed() {
-		return med;
+	public String getMedId() {
+		return medId;
 	}
 
-	public void setMed(Med med) {
-		this.med = med;
+	public void setMedId(String medId) {
+		this.medId = medId;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getUnits() {
+		return units;
+	}
+
+	public void setUnits(int units) {
+		this.units = units;
+	}
+
+	
 	
 	
 }

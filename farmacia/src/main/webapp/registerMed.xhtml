@@ -31,7 +31,7 @@
 
 				<!-- Med medId -->
 				<h:outputLabel for="medId" value="MedID" />
-				<h:inputText id="medId" size="30" value="#{med.medId}"
+				<h:inputText id="medId" size="30" value="#{regMed.medId}"
 					required="true" requiredMessage="En blanco">
 				</h:inputText>
 				<h:message styleClass="error-message" for="medId" />
@@ -39,7 +39,7 @@
 				<!-- Med brand -->
 				<h:outputLabel for="brand" value="Marca" />
 				<h:inputText id="brand" size="30"
-					value="#{med.brand}" required="true"
+					value="#{regMed.brand}" required="true"
 					requiredMessage="EN blanco">
 				</h:inputText>
 				<h:message styleClass="error-message" for="brand" />
@@ -47,7 +47,7 @@
 
 				<!-- Med name -->
 				<h:outputLabel for="name" value="Nombre" />
-				<h:inputText id="name" size="30" value="#{med.name}"
+				<h:inputText id="name" size="30" value="#{regMed.name}"
 					required="true" requiredMessage="EN blanco">
 				</h:inputText>
 				<h:message styleClass="error-message" for="name" />
@@ -55,7 +55,15 @@
 				<!-- Price -->
 				<h:outputLabel for="price" value="Precio" />
 				<h:inputText id="price" size="19"
-					value="#{med.price}" required="true"
+					value="#{regMed.price}" required="true"
+					requiredMessage="En blanco">		
+				</h:inputText>
+				<h:message styleClass="error-message" for="price" />
+				
+				<!-- Units -->
+				<h:outputLabel for="units" value="Unidades" />
+				<h:inputText id="units" size="19"
+					value="#{regMed.units}" required="true"
 					requiredMessage="En blanco">		
 				</h:inputText>
 				<h:message styleClass="error-message" for="price" />
@@ -63,7 +71,7 @@
 			</h:panelGrid>
 			<h:panelGrid columns="2" columnClasses="special-offer">
 				<h:commandButton value="Introducir"
-					action="#{registerMedBean.submit}">
+					action="#{regMed.submit}">
 				</h:commandButton>
 				<h:commandButton id="back" immediate="true" value="Volver"
 					action="index">

@@ -6,13 +6,17 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Named
-@SessionScoped
+
+
 @Entity
 @Table(name="MEDICAMENTOS")
+@NamedQuery(
+       name = "findMeds",
+       query = "SELECT b FROM Med b ORDER BY b.medId")
 public class Med implements Serializable {
 
 	
@@ -23,15 +27,19 @@ public class Med implements Serializable {
 	private String brand;
 	private String name;
 	private double price;
+	private int units;
 
-	
+
+
 	public Med(){}
 	
-	public Med(String medId, String name, String brand, double price) {
+	public Med(String medId, String name, String brand, double price,int units) {
 		this.medId = medId;
 		this.name = name;
 		this.brand = brand;
 		this.price=price;
+		this.units=units;
+
 	}
 
 	public String getMedId() {
@@ -64,6 +72,14 @@ public class Med implements Serializable {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getUnits() {
+		return units;
+	}
+
+	public void setUnits(int units) {
+		this.units = units;
 	}
 	
 }
