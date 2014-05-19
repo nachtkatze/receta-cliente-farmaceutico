@@ -18,44 +18,28 @@ import javax.faces.bean.ViewScoped;
 public class StockBean extends AbstractBean implements Serializable{
 	private static final long serialVersionUID = -3594317405246398714L;
 
-	
+	private static Compra compra=new Compra();
     @EJB
     private MedRequestBean medRequestBean;
-    
-//    private String name;
-//    private String medId;
-//    private String brand;
-//    private double price;
-//    private int units;
 
 
     public StockBean(){
     	
+    	
     }
     
-//    protected Med med() {
-//        Med med;
-//        med = (Med) context().getExternalContext()
-//           .getRequestMap().get("med");
-//
-//        return (med);
-//    }
     
-    public String add(Med med) {
+    //Añadimos un medicamento a la lista compra
+    public String add(Med med) throws Exception{
     	
-    	 System.out.println("La selarjaroas");
         //compra.add(med.getMedId(), med);
-        System.out.println("La seleccionada es"+med.getName());
-        message(null, "ConfirmAdd", new Object[]{med.getName()});
+        System.out.println("La seleccionada es "+med.getName());
+        message(null, "Añadida al recibo");
+                
+        	compra.add(med);    
 
         return null;
     }
-    public String hola(){
-    	System.out.println("HOla");
-    	return "index";
-    }
-    
-        
     
     public List<Med> getMeds() {
         try {
@@ -65,7 +49,11 @@ public class StockBean extends AbstractBean implements Serializable{
         }
     }
 
-
+    public void removeUnit(Med med) throws Exception{
+    	med.setUnits(med.getUnits()-1);
+    	medRequestBean.update(med);
+    }
+    
 	public MedRequestBean getMedRequestBean() {
 		return medRequestBean;
 	}
@@ -74,56 +62,18 @@ public class StockBean extends AbstractBean implements Serializable{
 	public void setMedRequestBean(MedRequestBean medRequestBean) {
 		this.medRequestBean = medRequestBean;
 	}
+	
+	public void clean(){
+		compra.clear();
+	}
 
+	public static Compra getCompra() {
+		return compra;
+	}
 
-//	public String getName() {
-//		return name;
-//	}
-//
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//
-//	public String getMedId() {
-//		return medId;
-//	}
-//
-//
-//	public void setMedId(String medId) {
-//		this.medId = medId;
-//	}
-//
-//
-//	public String getBrand() {
-//		return brand;
-//	}
-//
-//
-//	public void setBrand(String brand) {
-//		this.brand = brand;
-//	}
-//
-//
-//	public double getPrice() {
-//		return price;
-//	}
-//
-//
-//	public void setPrice(double price) {
-//		this.price = price;
-//	}
-//
-//
-//	public int getUnits() {
-//		return units;
-//	}
-//
-//
-//	public void setUnits(int units) {
-//		this.units = units;
-//	}
+	public static void setCompra(Compra compra) {
+		StockBean.compra = compra;
+	}
 
 
     

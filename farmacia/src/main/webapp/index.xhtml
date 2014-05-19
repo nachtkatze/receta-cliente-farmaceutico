@@ -35,7 +35,7 @@
                 <h:commandLink id="stock"
                                action="stock"
                                immediate="true"
-                               rendered="#{farmaceutico.farmaId == registerBean.admin}">
+                               rendered="#{farmaceutico.farmaId != nul}">
                     <h:outputText value="Ver almacén"/>
                 </h:commandLink>
                  &nbsp;&nbsp;
@@ -44,6 +44,13 @@
                                immediate="true"
                                rendered="#{farmaceutico.farmaId != registerBean.admin}">
                     <h:outputText value="Registrar farmaceutico"/>
+                </h:commandLink>
+                 &nbsp;&nbsp;
+                 <h:commandLink id="pagar"
+                               action="pagar"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId != null}">
+                    <h:outputText value="Ver pago actual"/>
                 </h:commandLink>
                  &nbsp;&nbsp;
                 <h:commandLink id="logOut"

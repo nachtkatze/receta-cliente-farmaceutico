@@ -53,7 +53,9 @@ public class MedRequestBean {
     	} catch (Exception ex) {
     		throw new EJBException(ex.getMessage());
     	}
-    } 
+    }
+    
+    
 
 }
 

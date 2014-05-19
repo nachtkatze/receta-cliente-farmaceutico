@@ -18,6 +18,7 @@
 
 	<ui:define name="top"></ui:define>
 	<ui:define name="content">
+	<h:form>
 		
 		<h1>Estado actual del almacén</h1>
 		
@@ -44,18 +45,28 @@
                          		<f:convertNumber currencySymbol="€" type="currency"/>
                          	</h:outputText>
                          </h:column>
-                         
-                         <h:column>
+                          <h:column>
                          	<f:facet name="header">Unidades</f:facet>
                          	<h:outputText value="#{med.units}"/>
-                         </h:column> 
-                                                                             	
-                    	  
+                         </h:column>
+                         <h:column>
+                         	<f:facet name="header">Recibo</f:facet>
+                         	<h:commandButton value="Añadir"
+                         			action="#{stock.add(med)}"/>
+                         </h:column>                                                                       	
+                    	
 		
+				</h:dataTable>
+		                         			
 		
-		</h:dataTable>
-		
-		
+			<h:panelGrid columns="2" columnClasses="special-offer">
+				<h:commandButton value="Limpiar compra actual"
+                         			action="#{stock.clean}"/>
+				<h:commandButton id="pay" immediate="true" value="Pagar"
+					action="pagar">
+				</h:commandButton>
+			</h:panelGrid>
+		</h:form>
 		<div class="messagecolor">
             <h:messages showSummary="true" 
                         showDetail="false"

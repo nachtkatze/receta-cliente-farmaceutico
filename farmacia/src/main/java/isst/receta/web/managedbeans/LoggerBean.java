@@ -4,11 +4,13 @@ import isst.receta.converters.Password;
 import isst.receta.ejb.Logging;
 import isst.receta.entity.Farmaceutico;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,7 +32,7 @@ public class LoggerBean extends AbstractBean implements Serializable {
 		String passwordCifrada=Password.cifrar(farmaceutico.getPassword());
 		Farmaceutico buscado=logging.checkPassword(farmaceutico.getFarmaId(), passwordCifrada);
 		if(buscado!=null){
-			farmaceutico=buscado;
+			farmaceutico.setName(buscado.getName());
 			return ("index");
 		}
 		
@@ -40,11 +42,10 @@ public class LoggerBean extends AbstractBean implements Serializable {
 	}
 	
 	public String logOut(){
-		System.out.println(farmaceutico.getFarmaId());
-		farmaceutico.setFarmaId(null);
-		System.out.println("AHora es" + farmaceutico.getFarmaId());
+		ExternalContext ec=FacesContext.getCurrentInstance().getExternalContext();
+		ec.invalidateSession();
+		return ("login");
 		
-		return ("index");
 	}
 	
 }
