@@ -5,6 +5,9 @@ import isst.receta.entity.Farmaceutico;
 import isst.receta.entity.Med;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -45,6 +48,16 @@ public class Pagar extends AbstractBean implements Serializable{
 	private List<Med> listaAlmacen;
 	private List<Med> listaCompra;
 	
+	private String fecha;
+	
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
 	public Pagar(){
 		
 	}
@@ -65,6 +78,11 @@ public class Pagar extends AbstractBean implements Serializable{
 		}		
 		cambio=roundOff(importe-total);
 		farma=farmaceutico.getName();
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Calendar cal = Calendar.getInstance();
+		fecha=dateFormat.format(cal.getTime());
+		
 		
 		return ("recibo");
 		
