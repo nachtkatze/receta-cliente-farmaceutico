@@ -72,7 +72,7 @@ public class Compra implements Serializable{
 			System.out.println("Medicamento "+item.getName()+" con "+ item.getUnits()+" unidades");
 			
 		}
-		total=total+(med.getPrice());
+		total=roundOff(total+(med.getPrice()));
 		System.out.println("Con importe total de "+total+" euros");
 		
 	}
@@ -93,6 +93,12 @@ public class Compra implements Serializable{
 	public void setTotal(int total) {
 		Compra.total = total;
 	}
+
+	private double roundOff(double x) {
+        long val = Math.round(x * 100); // cents
+
+        return val / 100.0;
+    }
 	
 	
 	

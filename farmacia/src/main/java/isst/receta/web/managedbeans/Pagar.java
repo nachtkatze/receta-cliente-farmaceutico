@@ -175,6 +175,22 @@ public class Pagar extends AbstractBean implements Serializable{
 	public void setTotal(double total) {
 		this.total = total;
 	}
+
+	public List<Med> getListaAlmacen() {
+		return listaAlmacen;
+	}
+
+	public void setListaAlmacen(List<Med> listaAlmacen) {
+		this.listaAlmacen = listaAlmacen;
+	}
+
+	public List<Med> getListaCompra() {
+		return listaCompra;
+	}
+
+	public void setListaCompra(List<Med> listaCompra) {
+		this.listaCompra = listaCompra;
+	}
 	
 
 }

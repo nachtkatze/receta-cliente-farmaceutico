@@ -44,6 +44,21 @@
 				
 				<h:message styleClass="error-message" for="card" />
 				
+			<h:dataTable id="items" value="#{compra.lista}" var="item"
+						headerClass="list-header"
+                         styleClass="list-background"
+                         rowClasses="list-row-even, list-row-odd"> 
+                         
+                         <h:column>
+                         	<f:facet name="header">Número de serie Nombre Marca Unidades Precio</f:facet>
+                         	<h:outputText value="#{item.medId} #{item.name} #{item.brand} x#{item.units} #{item.price}"/>
+                         </h:column>
+                      
+                                
+                 
+            </h:dataTable>    
+				
+				
 				<!-- Cliente Importe -->
 				<h:outputLabel for="total" value="Importe total: #{pagar.total} €" />
 				
