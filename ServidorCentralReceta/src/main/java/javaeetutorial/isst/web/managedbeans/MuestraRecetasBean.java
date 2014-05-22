@@ -30,6 +30,8 @@ public class MuestraRecetasBean extends AbstractBean {
 	@EJB
 	private PacienteRequestBean pacienteRequestBean;
 	
+	
+	
 	//@EJB
 	//private Paciente paciente;
 	
@@ -41,7 +43,6 @@ public class MuestraRecetasBean extends AbstractBean {
 	
 	public String mostrar() throws Exception {
 		List<Receta> recetas = recetaRequestBean.consultarRecetas();
-		System.out.println(recetas.size());
 		for(int i=0; i < recetas.size(); i++) {
 			Receta recetaResultado = recetas.get(i);
 			System.out.println(recetaResultado.getNombreMedicamento());

@@ -53,16 +53,16 @@ public class ConfigBean {
 		
 		receta.crearReceta("100", "Marcos Torres", "1000212", "Medico de Marcos",
 				"123456789", new Date(System.currentTimeMillis()), "Cetirizina",
-				"Tomar cuando te de la realisima gana", "Tipo raro", "Coso para la alergia");
+				"Tomar cuando te de la realisima gana", "Tipo raro", "Coso para la alergia", false);
 		receta.crearReceta("101", "Oscar Araque", "1000213", "Medico de Oscar",
 				"123456123", new Date(System.currentTimeMillis()), "Bisolvon",
-				"Tomar mucho, MUCHISIMO", "Tipo lucha", "Otro antitusivo");
+				"Tomar mucho, MUCHISIMO", "Tipo lucha", "Otro antitusivo", false);
 		receta.crearReceta("102", "Marcos Torres", "1000212", "Medico de Marcos",
 				"123456789", new Date(System.currentTimeMillis()), "Cetirizina2",
-				"Tomar por la oreja", "Para la alergia", "Es para la alergia nano");
+				"Tomar por la oreja", "Para la alergia", "Es para la alergia nano", false);
 		receta.crearReceta("103", "Oscar Araque", "1000213", "Medico de Oscar",
 				"123456123", new Date(System.currentTimeMillis()), "Bisolvon (x2)",
-				"Tomar mucho, MUCHISISISISIMO", "Tipo lucha contra la tos", "Otro antitusivo mas, aun");
+				"Tomar mucho, MUCHISISISISIMO", "Tipo lucha contra la tos", "Otro antitusivo mas, aun", false);
 		
 	}
 }

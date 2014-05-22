@@ -20,7 +20,10 @@ import javax.validation.constraints.NotNull;
 	        query = "SELECT r FROM Receta r ORDER BY r.recetaId"),
 	@NamedQuery(
 			name = "buscaRecetasPaciente",
-			query = "SELECT r FROM Receta r WHERE r.tarjetaSanitaria =:numeroTarjeta ORDER BY r.recetaId")
+			query = "SELECT r FROM Receta r WHERE r.tarjetaSanitaria =:numeroTarjeta ORDER BY r.recetaId"),
+	@NamedQuery(
+			name = "borrarRecetasPaciente",
+			query = "DELETE FROM Receta r WHERE r.tarjetaSanitaria =:numeroTarjeta")
 })
 
 
@@ -40,10 +43,11 @@ public class Receta implements Serializable {
 	private String posologia;
 	private String tipo;
 	private String medicamentoAlternativo;
+	private boolean expedido;
 	
 	
 	public Receta(String recetaId, String nombrePaciente, String tarjetaSanitaria, String nombreMedico, String numeroColegiado,
-			Date fechaExpedicion, String nombreMedicamento, String posologia, String tipo, String medicamentoAlternativo) {
+			Date fechaExpedicion, String nombreMedicamento, String posologia, String tipo, String medicamentoAlternativo, boolean expedido) {
 		this.recetaId = recetaId;
 		this.nombrePaciente = nombrePaciente;
 		this.tarjetaSanitaria = tarjetaSanitaria;
@@ -54,7 +58,16 @@ public class Receta implements Serializable {
 		this.posologia = posologia;
 		this.tipo = tipo;
 		this.medicamentoAlternativo = medicamentoAlternativo;
+		this.expedido = expedido;
 		
+	}
+
+	public boolean getExpedido() {
+		return expedido;
+	}
+
+	public void setExpedido(boolean expedido) {
+		this.expedido = expedido;
 	}
 
 	public String getRecetaId() {

@@ -21,8 +21,11 @@ import javaeetutorial.isst.exception.RecetasNotFoundException;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateful;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  * <p>Stateful session bean for the bookstore example.</p>
@@ -39,18 +42,20 @@ public class RecetaRequestBean {
     }
     
     public void crearReceta(String recetaId, String nombrePaciente, String tarjetaSanitaria, String nombreMedico, String numeroColegiado, Date fechaExpedicion,
-    		String nombreMedicamento, String posologia, String tipo, String medicamentoAlternativo) {
+    		String nombreMedicamento, String posologia, String tipo, String medicamentoAlternativo, boolean expedido) {
     	Receta receta = new Receta(recetaId, nombrePaciente, tarjetaSanitaria, nombreMedico, numeroColegiado, fechaExpedicion,
-    			nombreMedicamento, posologia, tipo, medicamentoAlternativo);
+    			nombreMedicamento, posologia, tipo, medicamentoAlternativo, expedido);
     	em.persist(receta);
     }
     
     public List<Receta> consultarRecetas() throws RecetasNotFoundException {
     	try {
-            return (List<Receta>) em.createNamedQuery("buscaReceta").getResultList();
+    		Query q = em.createNamedQuery("buscaReceta");
+    		List<Receta> receta = q.getResultList();
+    		return receta ;
         } catch (Exception ex) {
             throw new RecetasNotFoundException(
-                    "No se ha podido encontrar las recetas: " + ex.getMessage());
+                    "No se ha podido encontrar las recetas: " + ex.getStackTrace());
         }
     }
     
@@ -60,6 +65,18 @@ public class RecetaRequestBean {
     	} catch (Exception ex) {
     		throw new RecetasNotFoundException(
     				"No se ha podido encontrar las recetas por paciente: " + ex.getMessage());
+    	}
+    }
+    
+    public void eliminarRecetasPorPaciente(String pacienteID) {
+    	Query resultado = em.createNamedQuery("borrarRecetasPaciente").setParameter("numeroTarjeta", pacienteID);
+    }
+    
+    public void actualizarReceta(Receta receta) {
+    	try {
+    		em.merge(receta);
+    	} catch (Exception ex) {
+    		throw new EJBException(ex.getMessage());
     	}
     }
 

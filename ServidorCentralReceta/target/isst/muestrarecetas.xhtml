@@ -24,6 +24,17 @@
             <h2>
                Hola chato
             </h2>
+            <!-- Customer userId -->
+				<h:outputLabel for="paciente" value="Buscar por paciente" />
+				<!-- <h:inputText id="paciente" size="30" value="#{paciente.numeroSS}"
+					required="true" requiredMessage="Introduzca un numero de la SS">
+					<f:validateLength minimum="8" />
+				</h:inputText>-->
+			<h:message styleClass="error-message" for="paciente" />
+			<h:commandButton value="Buscar"
+				action="#{muestraRecetasBean.buscar}">
+			</h:commandButton>
+			
             <h:dataTable id="recetas"
                          value="#{catalogo.recetas}"
                          var="receta"
@@ -87,6 +98,7 @@
                 </h:column>
 
             </h:dataTable>
+           
 
         </h:form>
     </ui:define>
