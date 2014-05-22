@@ -52,6 +52,7 @@
             <version>${javaee.api.version}</version>
             <scope>provided</scope>
         </dependency>
+  
     </dependencies>
 	
 </project>

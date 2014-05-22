@@ -78,7 +78,7 @@ public class Compra implements Serializable{
 	}
 	
 	//Para limpiar la lista
-	public void clear(){
+	public void clean(){
 		lista.clear();
 		total =0;
 		

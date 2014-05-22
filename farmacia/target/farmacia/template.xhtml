@@ -25,18 +25,19 @@
         <h:body>
         	 <div id="top" class="top" align="center" 
                  style="background-color: grey;">
-                <h1>
-                     
+                
+                   <h:link outcome="index">
                     <h:graphicImage name="ThePharmacy-Logo.png" 
-                                    library="images" alt="Pharmacy ico"/>
-                    
-                </h1> 
+                                    library="images"/>
+                  </h:link>
+               
                 <ui:insert name="top" />
             </div>
-
+  
             <div id="content" class="center_content" align="center" >
                 <ui:insert name="content" />
-            </div>           
+            </div>
+                    
         </h:body>
     
 </html>

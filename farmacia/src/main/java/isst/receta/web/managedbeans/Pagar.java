@@ -3,10 +3,14 @@ package isst.receta.web.managedbeans;
 import isst.receta.ejb.MedRequestBean;
 import isst.receta.entity.Farmaceutico;
 import isst.receta.entity.Med;
+import isst.receta.rest.Reporte;
+import isst.receta.rest.ReporteExpedido;
 
 import java.io.Serializable;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,6 +18,11 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriBuilder;
 
 @Named("pagar")
 @RequestScoped
@@ -26,6 +35,9 @@ public class Pagar extends AbstractBean implements Serializable{
 	
 	@Inject
 	private Compra compra;
+	
+	@Inject
+	private StockBean stockBean;
 	
 	@Inject
 	private Farmaceutico farmaceutico;
@@ -101,14 +113,38 @@ public class Pagar extends AbstractBean implements Serializable{
 					actualizado=almacen.getUnits()-item.getUnits();
 					almacen.setUnits(actualizado);
 					medRequestBean.update(almacen);					
-				}
+				}	
 			}
 			
 		}
 		
-		compra.clear();
+		for(String numero: stockBean.getListaID()){
+			Client client = ClientBuilder.newClient();
+			UriBuilder builder = UriBuilder
+					.fromPath("http://strauss.gsi.dit.upm.es:8080/isst/recetas");
+			URI uri = builder.clone().queryParam(numero)
+					.queryParam("opcion=modificar&recetaID", numero).build();
+	
+			WebTarget r = client.target(uri);
+			System.out.println("URI: " + uri);
+	
+			ReporteExpedido report = r.request(MediaType.APPLICATION_JSON_TYPE).get(
+					ReporteExpedido.class);
+			System.out.println(report);
+			if(report.getEstado().equalsIgnoreCase("Receta actualizada")){
+				
+			} else{
+				message(null, "Error en el servidor central");
+			}
+		}
+		
+		compra.clean();
 		return("index");
 	}
+	
+	
+	
+	
 	
 	private double roundOff(double x) {
         long val = Math.round(x * 100); // cents

@@ -59,46 +59,26 @@
 		  
 			<h:panelGrid columns="3" columnClasses="special-offer">
 				<h:outputText value="Nº del TSI"/>
-				<h:inputText id="tsi" size="30" value="#{stock.pacienteID}"
-					required="true" requiredMessage="En blanco" validatorMessage="El TSI debe tener 7 caracteres">
-					<f:validateLength minimum="7" maximum="7"/>
+				<h:inputText id="city" size="30" value="#{stock.ciudad}"
+					required="true" requiredMessage="En blanco">
 				</h:inputText>
-				<h:commandButton value="Solicitud" action="#{stock.submit}"/>
+				
+				<h:commandButton value="Limpiar compra actual"
+                         			action="#{stock.clean}"/>
             </h:panelGrid>
-			
-    
             <h:panelGrid columns="2" columnClasses="special-offer">
 				<h:commandButton id="pay" immediate="true" value="Pagar"
 					action="pagar">
 				</h:commandButton>
-					<h:commandButton value="Limpiar compra actual" immediate="true"
-                         			action="#{stock.clean}"/>				
+				<h:commandButton value="Solicitud"
+                         			action="#{stock.submit}"/>					
 			</h:panelGrid>
 		
-
-            <h:dataTable id="recetas" value="#{stock.listaRecetas}" var="receta"
-						headerClass="list-header"
-                         styleClass="list-background"
-                         rowClasses="list-row-even, list-row-odd"
-                         rendered="#{stock.recibido == true}">
-                  		<h:outputText value="#{receta.nombrePaciente}"/>
-                         <h:column>
-                         	<f:facet name="header">Medicamento</f:facet>
-                         	<h:outputText value="#{receta.nombreMedicamento}"/>
-                         </h:column>
-                         <h:column>
-                         	<f:facet name="header">Medicamento Alternativo</f:facet>
-                         	<h:outputText value="#{receta.medicamentoAlternativo}"/>
-                         </h:column>                         
-                         <h:column>
-                         	<f:facet name="header">Médico</f:facet>
-                         	<h:outputText value="#{receta.nombreMedico}"/>
-                         </h:column>
-                    
-                         
-                         
-     		</h:dataTable>			
-	
+            <h:outputText value="La temperatura en #{stock.ciudad} es #{stock.temp}" 
+            rendered="#{stock.recibido == true}"/>
+       
+			
+			
 		</h:form>
 		<div class="messagecolor">
             <h:messages showSummary="true" 
