@@ -1,0 +1,17 @@
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/ejb/FarmaceuticoRequestBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/LoggerBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/entity/Farmaceutico.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/ejb/Logging.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/StockBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/Pagar.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/AbstractBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/rest/ReporteExpedido.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/RegisterBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/rest/Receta.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/ejb/MedRequestBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/LocaleBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/rest/Reporte.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/entity/Med.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/RegisterMedBean.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/converters/Password.java
+/home/js.aguera/git/gra/farmacia/src/main/java/isst/receta/web/managedbeans/Compra.java

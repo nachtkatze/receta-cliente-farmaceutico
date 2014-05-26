@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+
+    Copyright (c) 2013 Oracle and/or its affiliates. All rights reserved.
+
+    You may not modify, use, reproduce, or distribute this software except in
+    compliance with  the terms of the License at:
+    http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/template.xhtml">
+
+	<ui:define name="top"></ui:define>
+	<ui:define name="content">
+		<h:form id="pagar">
+			<h:panelGrid columns="2" headerClass="list-header"
+				styleClass="list-background"
+				rowClasses="list-row-even, list-row-odd"
+				summary="Info" title="Registro de venta"
+				role="presentation">
+				<!-- Panel header -->
+				<f:facet name="header">
+					<h:outputText value="Registro de venta" />
+				</f:facet>
+
+				<!-- Cliente name -->
+				<h:outputLabel for="name" value="Nombre" />
+				<h:inputText id="name" size="30" value="#{pagar.name}"
+					required="true" requiredMessage="En blanco">
+					
+				</h:inputText>
+				<h:message styleClass="error-message" for="name" />
+				
+				<!-- Cliente surname -->
+				<h:outputLabel for="surname" value="Apellidos" />
+				<h:inputText id="surname" size="30" value="#{pagar.surname}"
+					required="true" requiredMessage="En blanco" >
+			
+				</h:inputText>
+				<h:message styleClass="error-message" for="surname" />
+				
+				<!-- Cliente Tarjeta -->
+				<h:outputLabel for="card" value="Nº tarjeta sanitaria" />
+				<h:inputText id="card" size="30" value="#{pagar.card}"
+					required="true" requiredMessage="En blanco">
+				
+				</h:inputText>
+				<h:message styleClass="error-message" for="card" />	
+				
+				<!-- Cliente Importe -->
+				<h:outputLabel for="importe" value="Importe introducido" />
+				<h:inputText id="importe" size="30" value="#{pagar.importe}"
+					required="true" requiredMessage="Debe pagar">				
+				</h:inputText>
+				<h:message styleClass="error-message" for="importe" />	
+			</h:panelGrid>			
+		
+			
+			<h:dataTable id="items" value="#{compra.lista}" var="item"
+						headerClass="list-header"
+                         styleClass="list-background"
+                         rowClasses="list-row-even, list-row-odd"> 
+                         
+                         <h:column>
+                         	<f:facet name="header">Número de serie</f:facet>
+                         	<h:outputText value="#{item.medId}"/>
+                         </h:column>
+                         <h:column>
+                         	<f:facet name="header">Nombre</f:facet>
+                         	<h:outputText value="#{item.name}"/>
+                        </h:column>                         
+                         <h:column>
+                         	<f:facet name="header">Marca</f:facet>
+                         	<h:outputText value="#{item.brand}"/>
+                         </h:column>
+                          <h:column>
+                         	<f:facet name="header">Unidades</f:facet>
+                         	<h:outputText value="#{item.units}"/>
+                         </h:column>   
+                         <h:column>
+                         	<f:facet name="header">Precio</f:facet>
+                         	<h:outputText value="#{item.price}">
+                         		<f:convertNumber currencySymbol="€" type="currency"/>
+                         	</h:outputText>
+                         	 <f:facet name="footer">
+                        		<h:outputText value="Importe total € #{compra.total}" />
+                    		</f:facet>           
+                   		 </h:column>                
+                 
+            </h:dataTable>    
+			<h:commandButton value="Aceptar" action="#{pagar.pago}"></h:commandButton>
+		</h:form>
+		<div class="messagecolor">
+            <h:messages showSummary="true" 
+                        showDetail="false"
+                        errorStyle="color: #d20005" 
+                        infoStyle="color: blue"/>
+        </div>
+	</ui:define>
+</ui:composition>

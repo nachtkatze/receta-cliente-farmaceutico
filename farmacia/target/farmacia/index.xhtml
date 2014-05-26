@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template.xhtml">
+   
+   <ui:define name="top"></ui:define>
+   <ui:define name="menu"></ui:define>
+   <ui:define name="content">
+        <h:form>
+        	
+           <p id="registerCommand" style="float:right;text-align:right;width:75%;">
+           
+            <h:outputText value="Bienvenido, " rendered="#{farmaceutico.farmaId != null}"/>
+                &nbsp;
+                <h:outputText value="#{farmaceutico.name}" rendered="#{farmaceutico.farmaId != null}"/>
+                <h:commandLink id="login"
+                               action="login"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId == null}">
+                    <h:outputText value="Identificarse"/>
+                </h:commandLink>
+                &nbsp;&nbsp;
+                <h:commandLink id="registerMed"
+                               action="registerMed"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId != null}">
+                    <h:outputText value="Registrar medicamento"/>
+                </h:commandLink>
+                &nbsp;&nbsp;
+                <h:commandLink id="stock"
+                               action="stock"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId != nul}">
+                    <h:outputText value="Expedir medicamentos"/>
+                </h:commandLink>
+                 &nbsp;&nbsp;
+                <h:commandLink id="register"
+                               action="register"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId == registerBean.admin}">
+                    <h:outputText value="Registrar farmaceutico"/>
+                </h:commandLink>
+                 &nbsp;&nbsp;
+                 <h:commandLink id="pagar"
+                               action="pagar"
+                               immediate="true"
+                               rendered="#{farmaceutico.farmaId != null}">
+                    <h:outputText value="Ver pago actual"/>
+                </h:commandLink>
+                 &nbsp;&nbsp;
+                <h:commandLink id="logOut"
+                               action="#{logMe.logOut}"
+                            immediate="true"
+                               rendered="#{farmaceutico.farmaId != null}">
+                    <h:outputText value="Cerrar Sesión"/>
+                 </h:commandLink>    
+                </p>           
+        </h:form>       
+        
+        <div class="messagecolor">
+            <h:messages showSummary="true"
+                        showDetail="false"
+                        errorStyle="color: #d20005"
+                        infoStyle="color: blue"/>
+        </div>
+        
+    </ui:define>
+</ui:composition>
